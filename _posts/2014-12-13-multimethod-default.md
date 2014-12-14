@@ -1,5 +1,6 @@
 ---
 layout: post
+date: 2014-12-13
 title: Caching multimethod default value dispatch
 ---
 

@@ -51,7 +51,7 @@ baseurl: ""
 
 markdown: kramdown
 highlighter: pygments
-permalink: /:title/
+permalink: /:date-:title/
 
 # The release of Jekyll Now that you're using
 version: v1.0.0
@@ -72,6 +72,3 @@ exclude:
     - Gemfile.lock
     - LICENSE
     - README.md
-
-redcarpet:
-  extensions: []
