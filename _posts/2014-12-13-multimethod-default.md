@@ -18,7 +18,7 @@ Backing up slightly, multimethods are functions that can dispatch to many possib
 method implementations based on the result of an initial dispatch function. For 
 example:
 
-~~~
+~~~ clojure
 ;; Define the multimethod mm that dispatches on the function class
 (defmulti mm class)
 
@@ -65,7 +65,7 @@ We now look up and alter the cache when the default branch is taken. This can ma
 difference in performance when you are using the :default case. Here is a simple test 
 using a mixture of default and non-default values:
 
-```clojure
+~~~ clojure
 ;; build a cycle of strings, longs, and keywords of requested size
 ;; the multimethod handles strings and longs but not keywords
 ;; time each rep where the multimethod is mapped over the cycle
@@ -89,7 +89,7 @@ user=> (perf 5 100000)
 "Elapsed time: 45.452 msecs"
 "Elapsed time: 13.189 msecs"
 "Elapsed time: 13.42 msecs"
-```
+~~~
 
 The JIT warms up in both cases but you can see that there is a dramatic performance boost here.
 This change was added in Clojure 1.7.0-alpha1.
