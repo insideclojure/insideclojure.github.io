@@ -77,6 +77,11 @@ exclude:
 jekyll-archives:
   enabled: []
   layout: 'archive'
+  layouts:
+    year: archive-year
+    month: archive-month
+    day: archive-day
+    tag: archive-tag
   permalinks:
     year: '/:year/'
     month: '/:year/:month/'
