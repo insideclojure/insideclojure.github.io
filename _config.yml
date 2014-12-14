@@ -65,6 +65,7 @@ sass:
 gems:
   - jemoji # Emoji please!
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-archives
 
 # Exclude these files from your production _site
 exclude:
@@ -72,3 +73,13 @@ exclude:
     - Gemfile.lock
     - LICENSE
     - README.md
+
+jekyll-archives:
+  enabled: all
+  layout: 'archive'
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
