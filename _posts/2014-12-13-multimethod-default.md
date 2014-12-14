@@ -18,7 +18,7 @@ Backing up slightly, multimethods are functions that can dispatch to many possib
 method implementations based on the result of an initial dispatch function. For 
 example:
 
-~~~ clojure
+{% highlight clojure %}
 ;; Define the multimethod mm that dispatches on the function class
 (defmulti mm class)
 
@@ -28,7 +28,7 @@ example:
 
 ;; You can also define a fallthrough default for when nothing matches
 (defmethod :default [v] v)
-~~~
+{% endhighlight %}
 
 Invoking a multimethod involves evaluating two functions: the dispatch function (class in
 the example above) and then using the return value to select the matching method 
