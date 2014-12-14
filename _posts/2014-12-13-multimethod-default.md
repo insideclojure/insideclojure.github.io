@@ -18,7 +18,7 @@ Backing up slightly, multimethods are functions that can dispatch to many possib
 method implementations based on the result of an initial dispatch function. For 
 example:
 
-```clojure
+```
 ;; Define the multimethod mm that dispatches on the function class
 (defmulti mm class)
 
