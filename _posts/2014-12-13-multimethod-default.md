@@ -93,6 +93,6 @@ user=> (perf 5 100000)
 {% endhighlight %}
 
 The JIT warms up in both cases but you can see that there is a dramatic performance boost here.
-This change was added in Clojure 1.7.0-alpha1.
+This change was added in Clojure 1.7.0-alpha2.
 
 
