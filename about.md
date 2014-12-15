@@ -29,7 +29,8 @@ drop me a line on Twitter or by email. I will update the post in the case of err
 other useful information.
 
 If you have a topic you'd like me to cover, feel free to ask. I will not always want or be
-able to write on it, but I'll consider it.
+able to write on it, but I'm happy to consider it.
 
 Alex Miller
+
 [alex@puredanger.com](mailto:alex@puredanger.com)
