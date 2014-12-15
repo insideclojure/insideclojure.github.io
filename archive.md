@@ -1,3 +1,6 @@
+---
+layout: default
+---
 <section id="archive">
   <h3>This year's posts</h3>
   {%for post in site.posts %}
