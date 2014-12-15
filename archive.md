@@ -15,7 +15,7 @@ layout: default
         <ul class="past">
       {% endif %}
     {% endunless %}
-      <li><time>{{ post.date | date:"%d %b" }}</time><a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><time>{{ post.date | date:"%d %b" }}</time> <a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
   </ul>
 </section>
