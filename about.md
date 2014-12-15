@@ -20,7 +20,16 @@ statements by Cognitect about Clojure.
 
 - Twitter - [@puredanger](http://twitter.com/puredanger)
 - Blog - [http://tech.puredanger.com](http://tech.puredanger.com)
+- ["Clojure Applied"](https://pragprog.com/book/vmclojeco/clojure-applied) - a forthcoming book by me and Ben Vandgrift! Hopefully in Beta soon...
 
 ### Contact me
 
+This blog intentionally does not have comments. If you have question or a comment, please
+drop me a line on Twitter or by email. I will update the post in the case of errors or
+other useful information.
+
+If you have a topic you'd like me to cover, feel free to ask. I will not always want or be
+able to write on it, but I'll consider it.
+
+Alex Miller
 [alex@puredanger.com](mailto:alex@puredanger.com)
