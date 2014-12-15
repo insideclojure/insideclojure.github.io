@@ -16,7 +16,7 @@ this might be of use to others wishing to understand how Clojure works from the 
 ### More Information
 
 - Twitter - [@puredanger](http://twitter.com/puredanger)
-- Blog - http://tech.puredanger.com 
+- Blog - [http://tech.puredanger.com](http://tech.puredanger.com)
 
 ### Contact me
 
