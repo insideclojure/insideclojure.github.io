@@ -13,6 +13,9 @@ Most of this work involves deeply understanding the code base for Clojure itself
 created this blog to record my own thoughts, both for my own memories and because
 this might be of use to others wishing to understand how Clojure works from the inside.
 
+Disclaimer: Any thoughts or opinions expressed in this blog are mine, not official
+statements by Cognitect about Clojure. 
+
 ### More Information
 
 - Twitter - [@puredanger](http://twitter.com/puredanger)
