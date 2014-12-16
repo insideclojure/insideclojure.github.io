@@ -45,6 +45,7 @@ Below is the bytecode for just the invoke method of this function:
 ~~~
 
 Analysis of this bytecode:
+
 - Method signature - inputs and output are all Objects (so boxing happens on input and output)
 - line 0 - loads a from local variable 1 onto the stack ("this" is in 0, a is in 1, b is in 2)
 - line 1 - loads a from local variable 1 onto the stack
