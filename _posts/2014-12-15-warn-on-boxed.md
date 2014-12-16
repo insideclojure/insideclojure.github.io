@@ -76,7 +76,7 @@ Let's sprinkle some type hints on the function and see what changes:
 
 Now we have an invokePrim function (the prior invoke Object version still exists, just in case this gets called with something else!) that takes and returns longs. Note that we now do not need to clear locals, we don't call methods in Numbers with Object and we have a long return at the end. This is good, but we can actually do more.
 
-The Numbers methods will do bounds checking and throw on overflow - this is the default Clojure behavior. We can get rid of bounds checking if we don't care and want better performance by setting the dynamic variable *unchecked-math*. Let's see what that looks like...
+The Numbers methods will do bounds checking and throw on overflow - this is the default Clojure behavior. We can get rid of bounds checking if we don't care and want better performance by setting the dynamic variable \*unchecked-math*. Let's see what that looks like...
 
 {% highlight clojure %}
 (set! *unchecked-math* true)
@@ -112,7 +112,7 @@ Boxed | 7.35 µs
 Checked primitives | 4.31 µs
 Unchecked primitives | 3.35 µs
 
-Having done this kind of thing a lot, it's kind of annoying to be disassembling the code all the time. Something that I worked on ([CLJ-1325](http://dev.clojure.org/jira/browse/CLJ-1325))and which is now available is a new setting that will warn on many uses of boxed methods in the Numbers class (anything taking or returning an Object or Number). Here's how it works:
+Having done this kind of thing a lot, it's kind of annoying to be disassembling the code all the time. Something that I worked on ([CLJ-1325](http://dev.clojure.org/jira/browse/CLJ-1325)) and which is now available is a new setting that will warn on many uses of boxed methods in the Numbers class (anything taking or returning an Object or Number). Here's how it works:
 
 {% highlight clojure %}
 user=> (set! *unchecked-math* :warn-on-boxed)
