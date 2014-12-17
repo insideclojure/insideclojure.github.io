@@ -35,38 +35,37 @@ Conceptually, we need to do something similar in the transducer function, howeve
 {% highlight clojure %}
 (defn distinct []
    (fn [rf]
-     (let [seen (java.util.HashSet.)]
+     (let [seen (volatile! #{})]
        (fn
          ([] (rf))              ;; init arity
          ([result] (rf result)) ;; completion arity
          ([result input]        ;; reduction arity
-           (if (.add seen input)
-             (rf result input)
-             result))))))
+           (if (contains? @seen input)
+             result
+             (do (vswap! seen conj input)
+                 (rf result input))))))))
 {% endhighlight %}
 
 Just as in the sequence form of distinct, we need a set to keep track of what values we've already seen. 
 Notice that distinct will return a (stateless) function. 
-The set is created new every time a transducing process starts stepping with the composite reducing function in the transducer. 
+The set is created anew every time a transducing process starts stepping with the composite reducing function in the transducer. 
 Once this process starts, the transducing process must not hand out the composite reducing function as it is stateful!
 All of the existing processes (transduce, core.async channels, etc) follow this rule.
 
-Because the state is encapsulated inside the composite reducing function, we can use something stateful. 
-One option is to use an atom or volatile to create a stateful identity - we'll see an example of those in a future post. 
-In this case, there happens to be a mutable stateful set already available to us: java.util.HashSet.
-Usage of this set will be safely published (as seen will be closed over in a final field of the inner compiled function) and only used by a single thread at a time, thus usage of an unsynchronized set is safe here.
-
-**UPDATE: Christophe Grand rightly pointed out that HashSet has different hash/equality semantics than Clojure collections, meaning that this will need to change.**
+Because we are not passing state along with the reducing function, we need some state on the side to track what we've seen.
+We could use an atom, but we have a lighter-weight alternative now available.
+Volatiles were adding in 1.7 and can be used to track a single safely published stateful value.
+Volatiles are inherently more dangerous than atoms - while they safely publish changes to other threads they do not provide a means for coordinated read/write actions. 
+Thus, volatiles are only safe to use if you can guarantee that something else (program semantics or external locking mechanism) will prevent race conditions.
+In this case, the reducing function will only used by a single thread at a time, thus there is no race condition possible in this code.
 
 The init and completion arities merely call through to the nested transducer, so nothing interesting on those. 
 This is the default implementation for those transducer arities - just calling through to the wrapped reducing function.
 
 The reduction arity is where the meat of the distinct is implemented.
-We simply check whether the seen set contains the new input.
-If so, we pass it on through to the wrapped reducing function.
-If not, we don't need to loop as we did in the sequence - the outer transducing process will take care of that for us.
-Instead, we simply return the accumulator value as is.
-In other words, if the value has already been seen, we simply do not produce a value.
+If the set contains the new input, we don't need to loop as we did in the sequence - the outer transducing process will take care of that for us.
+Instead, we simply return the accumulator value as is and let the outer transducible process keep pushing values into the transducer.
+If the input is new, we pass it on through to the wrapped reducing function, which will will ultimately decide what to do with the output.
 
 Now that we have an implementation, we can try it out. 
 We'll start with a vec that contains the numbers 0-999, then 0-999 again. 
@@ -94,7 +93,7 @@ If we compare the performance of into on the sequence and transducer versions, y
 expr | time 
 ----- | ----
 (into [] (distinct v)) | 821.3 µs
-(into [] (distinct) v) | 43.6 µs
+(into [] (distinct) v) | 388.2 µs
 
 I intentionally used a vector as the input source here (although a seq would have worked as well).
 Vectors support the internal IReduce interface and can quickly reduce themselves by traversing their inner data structure rather than needing to realize a sequence element by element. 
@@ -104,6 +103,9 @@ While the distinct transducer will work with core.async channels, you should use
 Channels are transducible processes that can be used on arbitrarily lengthy streams of values and the internal "seen" set can thus grow without bound, potentially causing problems.
 It would be possible to build a variant of distinct that limited the size of the seen values based on maximum size, least recently seen, or some other clearing mechanism.
 
-Clojure 1.7 also contains a new transducer and sequence function dedupe that crunches runs of repeated values down to a single value. The cache in that case is just a single value so it is much safer to use with channels.
+Clojure 1.7 also contains a new transducer and sequence function dedupe that crunches runs of repeated values down to a single value.
+The cache in that case is just a single value so it is much safer to use with channels.
 
 In future posts, I'll talk about the other transducer functions in this ticket (interpose and map-indexed) which have their own interesting implementations.
+
+**NOTE: Thanks to Christophe Grand for pointing out a bug in the implementation used in the original version of this post. The patch on the ticket and this post have been updated to reflect the changes.**
