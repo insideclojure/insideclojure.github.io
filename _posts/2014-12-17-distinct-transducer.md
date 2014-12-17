@@ -4,12 +4,11 @@ date: 2014-12-17
 title: Creating a distinct transducer
 ---
 
-I wanted to talk in this post about implementing some new transducer impls on existing sequence functions which is based on [CLJ-1601](http://dev.clojure.org/jira/browse/CLJ-1601). 
-*NOTE: As of the writing date, this talk has not yet been screened or incorporated into Clojure. It is still subject to change based on feedback during screening!!*
+I wanted to talk in this post about implementing some new transducer impls for existing sequence functions which is based on [CLJ-1601](http://dev.clojure.org/jira/browse/CLJ-1601). If you haven't checked into transducers yet, it's probably best if you take a look at [this talk](https://www.youtube.com/watch?v=6mTbuzafcII), [this talk](https://www.youtube.com/watch?v=4KqUvG8HPYo), and [this page](http://clojure.org/transducers) as background.
 
-If you haven't checked into transducers yet, it's probably best if you take a look at [this talk](https://www.youtube.com/watch?v=6mTbuzafcII), [this talk](https://www.youtube.com/watch?v=4KqUvG8HPYo), and [this page](http://clojure.org/transducers) as background.
+*NOTE: As of the writing date, this ticket has not yet been screened or incorporated into Clojure. It is still subject to change based on feedback during screening!!*
 
-The ticket (based on a request from Rich) asked for new transducer arities for three existing sequence functions: sequence, interpose, and map-indexed. In this post we'll look specifically at created a transducer arity of distinct.
+The ticket (based on a request from Rich) asked for new transducer arities for three existing sequence functions: distinct, interpose, and map-indexed. In this post we'll look specifically at creating a transducer arity for distinct.
 
 The sequence version of distinct is implemented like this:
 
@@ -52,7 +51,7 @@ Once this process starts, the transducing process must not hand out the composit
 All of the existing processes (transduce, core.async channels, etc) follow this rule.
 
 Because the state is encapsulated inside the composite reducing function, we can use something stateful. 
-One option is to use an atom or volatile to create a stateful identity - we'll see an example of those later. 
+One option is to use an atom or volatile to create a stateful identity - we'll see an example of those in a future post. 
 In this case, there happens to be a mutable stateful set already available to us: java.util.HashSet. 
 Usage of this set will be safely published (as seen will be closed over in a final field of the inner compiled function) and only used by a single thread at a time, thus usage of an unsynchronized set is safe here.
 
@@ -83,8 +82,9 @@ There are several ways we could invoke a transducer to accomplish the same resul
 (sequence (distinct) v)
 {% endhighlight %}
 
-The first two (transduce and into) both eagerly produce a vector as the result (but you can see how to return a set or other data structure instead). 
-The last one produces a sequence that will be computed element by element as needed.
+The first two (transduce and into) both eagerly produce a vector as the result but you can see how to return a set, list, or other data structure instead.
+This is one of the benefits of separating the output generation from the algorithmic reduction - we can produce any kind of output, not just a lazy sequence as in the sequence version which explicitly uses cons.
+The last example produces a sequence that will be incrementally computed element by element as needed, similar to a lazy seq.
 
 If we compare the performance of into on the sequence and transducer versions, you can see it has a big impact (timings done with [Criterium](https://github.com/hugoduncan/criterium)):
 
@@ -94,13 +94,13 @@ expr | time
 (into [] (distinct) v) | 43.6 µs
 
 I intentionally used a vector as the input source here (although a seq would have worked as well).
-Inputs support the internal IReduce interface and can quickly reduce themselves by traversing their inner data structure rather than needing to realize a sequence element by element. 
+Vectors support the internal IReduce interface and can quickly reduce themselves by traversing their inner data structure rather than needing to realize a sequence element by element. 
 Transducers return a vector as well (in the transduce and into examples above), allowing you to continue working in collections, which have this faster reduction capability.
 
-While the distinct transducer will work with core.async channels, you should do this cautiously. 
-Channels are transducible processes that can be used on arbitrarily lenghty streams of values and the internal "seen" set can thus grow without bound.
-It would be possible to build a variant of distinct that had other properties, limiting the size of the seen values based on maximum size, least recently seen, or explicit clearing.
+While the distinct transducer will work with core.async channels, you should use some caution with this particular transducer.
+Channels are transducible processes that can be used on arbitrarily lengthy streams of values and the internal "seen" set can thus grow without bound, potentially causing problems.
+It would be possible to build a variant of distinct that limited the size of the seen values based on maximum size, least recently seen, or some other clearing mechanism.
 
-Clojure 1.7 also contains a new transducer and sequence function dedupe that crunches runs of repeated values down to a single value. The cache in this case is just a single value so it is much safer to use with channels.
+Clojure 1.7 also contains a new transducer and sequence function dedupe that crunches runs of repeated values down to a single value. The cache in that case is just a single value so it is much safer to use with channels.
 
-In future posts, I'll talk about the other transducer functions in this ticket - interpose and map-indexed which have their own interesting implementations.
+In future posts, I'll talk about the other transducer functions in this ticket (interpose and map-indexed) which have their own interesting implementations.
