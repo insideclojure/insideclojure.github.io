@@ -45,15 +45,18 @@ Conceptually, we need to do something similar in the transducer function, howeve
              result))))))
 {% endhighlight %}
 
-Just as in the sequence form of distinct, we need a set to keep track of what values we've already seen. Notice that distinct will return a (stateless) function. 
+Just as in the sequence form of distinct, we need a set to keep track of what values we've already seen. 
+Notice that distinct will return a (stateless) function. 
 The set is created new every time a transducing process starts stepping with the composite reducing function in the transducer. 
 Once this process starts, the transducing process must not hand out the composite reducing function as it is stateful!
 All of the existing processes (transduce, core.async channels, etc) follow this rule.
 
 Because the state is encapsulated inside the composite reducing function, we can use something stateful. 
 One option is to use an atom or volatile to create a stateful identity - we'll see an example of those in a future post. 
-In this case, there happens to be a mutable stateful set already available to us: java.util.HashSet. 
+In this case, there happens to be a mutable stateful set already available to us: java.util.HashSet.
 Usage of this set will be safely published (as seen will be closed over in a final field of the inner compiled function) and only used by a single thread at a time, thus usage of an unsynchronized set is safe here.
+
+**UPDATE: Christophe Grand rightly pointed out that HashSet has different hash/equality semantics than Clojure collections, meaning that this will need to change.**
 
 The init and completion arities merely call through to the nested transducer, so nothing interesting on those. 
 This is the default implementation for those transducer arities - just calling through to the wrapped reducing function.
