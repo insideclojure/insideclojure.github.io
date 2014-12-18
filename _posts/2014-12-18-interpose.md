@@ -6,14 +6,14 @@ title: Creating an interpose transducer
 
 Continuing from yesterday's [post](/2014/12/17/distinct-transducer/), I wanted to cover the interpose transducer from [CLJ-1601](http://dev.clojure.org/jira/browse/CLJ-1601).
 
-The sequence version of interpose is implemented like this:
+The sequence version of interpose is a straightforward combination of other existing sequence functions (repeat, interleave, and drop). 
+It's implemented like this:
 
 {% highlight clojure %}
  (defn interpose [sep coll]
  	(drop 1 (interleave (repeat sep) coll)))
 {% endhighlight %}
 
-This is a straightforward combination of other existing sequence functions. 
 Walking inside out, (repeat seq) will create an infinite sequence of separator strings.
 (interleave (repeat sep) coll) will interleave the infinite separate seq and the collection (possibly also an infinite sequence!) like this:
 
@@ -58,8 +58,8 @@ An example where this could happen would be:
 (into [] (comp (interpose :x) (take 4)) (range 3))
 {% endhighlight %}
 
-The (range 3) produces sequence (0 1 2). 
-The interpose should produce (0 :x 1 :x 2). 
+The (range 3) produces sequence (0 1 2).
+The interpose should produce (0 :x 1 :x 2).
 The take should then grab just (0 :x 1 :x) and the reduced wrapper will be sent on a separator (:x).
 
 So in the transducer code, we need to check if we've already encountered a reduced value when we invoke rf on the sepr, and if so stop and return the reduced value without invoking on the next input.
