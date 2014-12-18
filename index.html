@@ -10,7 +10,7 @@ layout: default
     <p><em>{{ post.date | date_to_string }}</em></p>
 
       <div class="entry">
-        {{ post.content | truncatewords:40}}
+        {{ post.content | truncatewords:35}}
       </div>
       
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
