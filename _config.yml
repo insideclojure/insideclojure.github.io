@@ -73,3 +73,5 @@ exclude:
     - LICENSE
     - README.md
 
+kramdown:
+  - timezone: America/Chicago
