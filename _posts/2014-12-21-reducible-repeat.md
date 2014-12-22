@@ -4,7 +4,7 @@ date: 2014-12-21
 title: Creating a reducible repeat
 ---
 
-One fun ticket ([CLJ-1603](http://dev.clojure.org/jira/browse/CLJ-1603))that I worked on recently involved retrofitting some existing sequence "generator" functions to be directly reducible.
+One fun ticket ([CLJ-1603](http://dev.clojure.org/jira/browse/CLJ-1603)) that I worked on recently involved retrofitting some existing sequence "generator" functions to be directly reducible.
 Specifically, the clojure.core functions cycle, iterate, and repeat.
 I'll just talk about repeat in this post and maybe come back to the others in the future.
 
@@ -104,3 +104,4 @@ Here's a few simple tests of the updated repeat function:
 The first two tests demonstrate reduction over a finite repeat.
 The final one is a transducer applied over an infinite repeat.
 
+One implementation alternative I considered was splitting the finite and infinite cases into separate classes and that may still be a worthwhile change.
