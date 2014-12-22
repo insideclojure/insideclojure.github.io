@@ -103,5 +103,7 @@ Here's a few simple tests of the updated repeat function:
 
 The first two tests demonstrate reduction over a finite repeat.
 The final one is a transducer applied over an infinite repeat.
+The last example uses the new transducer arity of into, but you can compare instead to the sequence version (into [] (take 1000 (repeat 1))), which benchmarks on 1.6.0 around 99 µs.
+
 
 One implementation alternative I considered was splitting the finite and infinite cases into separate classes and that may still be a worthwhile change.
