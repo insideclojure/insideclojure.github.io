@@ -78,7 +78,7 @@ public Object reduce(IFn f, Object start){
 }
 {% endhighlight %}
 
-Most importantly, we extend ASeq which gives us much of the sequence and collection infrastructure. At that point, it's really a matter of implementing first/next in the right way, and of course out primary target, reduce.
+Most importantly, we extend ASeq which gives us much of the sequence and collection infrastructure. At that point, it's really a matter of implementing first/next in the right way, and of course our primary target, reduce.
 
 There are really two cases for repeat - infinite and finite. Infinite repeats are easy - each is a single instance that returns the repeated value for first() and itself for next(). Reducing over an infinite repeat just involves repeatedly invoking f on the constant value until a reduced value is returned.
 
