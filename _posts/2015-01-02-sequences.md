@@ -38,7 +38,7 @@ Collections or other things that can produce a sequence are *seqable*. Calling `
     (comment "all done - terminate")))
 {% endhighlight %}
 
-Sequence functions (map, filter, etc) implicitly call `seq` on the incoming collection and return a sequence (possibly empty, not nil). You must use `seq` on the result to nil pun.
+Sequence functions (map, filter, etc) implicitly call `seq` on the incoming (seqable) collection and return a sequence (possibly empty, not nil). You must use `seq` on the result to nil pun.
 
 {% highlight clojure %}
 user=> (filter odd? [1 2 3]) ;; calls seq on the vector
@@ -89,7 +89,7 @@ So don't do that. If your code fully controls the Java array backing the sequenc
 
 ## Laziness 
 
-Because sequences are only evaluated an element at a time, they can represent an infinite stream of computed (or extracted) values. Lazy sequences can be created with the `[lazy-seq](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/lazy-seq)` macro, which takes a body that yields a seq, nil, or anything seqable. 
+Because sequences are only evaluated an element at a time, they can represent an infinite stream of computed (or extracted) values. Lazy sequences can be created with the `[lazy-seq](http://clojure.github.io/clojure/clojure.core-api.html#clojure.core%2Flazy-seq)` macro, which takes a body that yields a seq, nil, or anything seqable. 
 
 For example, a simplified version of map could be written:
 
