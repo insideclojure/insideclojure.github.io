@@ -135,4 +135,4 @@ A few important reference pages:
 
 - [Sequences](http://clojure.org/sequences) - the main sequence documentation
 - [Lazy](http://clojure.org/lazy) - a historical document at the time of the last major overhaul of Clojure sequences
-
+- [Cheat sheet](http://clojure.org/cheatsheet) - a great list of categorized sequence functions 
