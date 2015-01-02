@@ -4,11 +4,9 @@ date: 2015-01-02
 title: Sequences
 ---
 
-Two of the foundations of Clojure are immutable values (particularly immutable persistent collections) and functional programming. Sequences are the key abstraction that connects these two foundational elements.
+Sequences are the key abstraction that connects two of the most important parts of Clojure - immutable persistent collections and the sequence library. Lisp has a deep tradition of list-oriented transformation functions. In Clojure, these functions have been separated from the specific linked list data structure and built instead upon the sequence abstraction. Sequences are *logical* lists that can be sequentially traversed.
 
-Lisp has a deep tradition of list-oriented transformation functions. In Clojure, these functions have been separated from the specific linked list data structure and built instead upon the sequence abstraction. Sequences are *logical* lists that can be sequentially traversed.
-
-The key seq abstraction functions are:
+The key sequence abstraction functions are:
 
 - `(first coll)` - return the first element
 - `(rest coll)` - returns a logical collection of the rest of elements (not necessarily a seq). Never returns nil. 
@@ -23,9 +21,11 @@ Sequences are traversed by a series of `first` and `rest` or `next` calls. As el
 
 ## Terminology and empty sequences
 
-There is some very careful language used in the oldest docs and docstrings around the terminology of *sequence*, *seq*, etc. As far as I read it, a collection produces a *seq*, a `lazy-seq` returns a *lazy-seq*, and a *sequence* is either a *seq* or a *lazy-seq*. This distinction was (at one point) reflected in the underlying Java interfaces, however that no longer exists and all modern usage of the terms treat *seq* and *sequence* interchangeably.
+There is some very careful language used in the oldest docs and docstrings around the terminology of *sequence*, *seq*, etc. As far as I read it, a collection produces a *seq*, a `lazy-seq` returns a *lazy-seq*, and a *sequence* is either a *seq* or a *lazy-seq*. This distinction was (at one point) reflected in the underlying Java interfaces, however that no longer exists and modern usage treats *seq* and *sequence* as interchangeable terms.
 
-One related and confusing aspect of sequences centers around the representation of a sequence of no elements. A *seq* (or the result of calling `seq` or `next`) will always be either nil or a sequence with at least one element. The result of calling `sequence` or `rest` will represent an empty sequence as a non-nil empty sequence, which may be an empty list, an unrealized empty lazy sequence, or something else. Depending on context, either nil or an empty sequence may be the expected representation.
+One related and confusing aspect of sequences centers around the representation of a sequence of no elements. A *seq* (or the result of calling `seq` or `next`) will always be either nil or a sequence with at least one element. The result of calling `sequence` or `rest` will represent an empty sequence as a non-nil empty sequence, which may be an empty list, an unrealized empty lazy sequence, or something else. 
+
+Depending on context, either nil or an empty sequence may be the expected representation.
 
 ## Seqable
 
@@ -34,8 +34,8 @@ Collections or other things that can produce a sequence are *seqable*. Calling `
 {% highlight clojure %}
 (let [s (seq coll)]
   (if s
-    ( ... work on (first s) and recur on (rest s) ... )
-    ( ... all done - terminate ... )))
+    (comment "work on (first s) and recur on (rest s)")
+    (comment "all done - terminate")))
 {% endhighlight %}
 
 Sequence functions (map, filter, etc) implicitly call `seq` on the incoming collection and return a sequence (possibly empty, not nil). You must use `seq` on the result to nil pun.
