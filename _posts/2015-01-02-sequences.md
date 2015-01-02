@@ -113,21 +113,21 @@ Many of the lazy sequence functions in Clojure amortize the realization of eleme
 Clojure is implemented in both Java and Clojure. Many of the most important sequence interfaces and implementations are implemented in Java:
 
 - `clojure.lang.ISeq` - the sequence abstraction interface
-- `clojure.lang.ASeq` - an abstract sequence implementation for easier implementations
+- `clojure.lang.ASeq` - an abstract sequence for easier sequence implementation
 - `clojure.lang.LazySeq` - lazy sequence implementation
 - `clojure.lang.Seqable` - seqable marker
 - `clojure.lang.Sequential` - a collection trait indicating whether a collection is sequential (an ordered series of values). Lists, vectors, and effectively all seqs are sequential.
 
-The Clojure list implementation (`clojure.lang.PersistentList`) is a list data structure and thus is both a concrete data structure and implements the ISeq abstraction directly. All of the other collections are Seqable, but not ISeq.
+The Clojure list implementation (`clojure.lang.PersistentList`) is a list data structure and thus is both a concrete data structure and also implements the ISeq abstraction directly. All of the other collections are Seqable, but not ISeq.
 
 ## Predicates and functions
 
-Some important other sequence predicates:
+Some other important sequence predicates:
 
 - `seq?` - checks whether an instance implements ISeq
 - `sequential?` - checks whether an instance implements Sequential
 
-There are no `seqable?` or `sequence?` predicates.
+There is no `seqable?` predicate, although that might be useful to add (would just check instanceof Seqable).
 
 ## Reference
 
