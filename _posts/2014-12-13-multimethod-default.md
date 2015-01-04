@@ -28,7 +28,7 @@ example:
 (defmethod mm Long [l] l)
 
 ;; You can also define a fallthrough default for when nothing matches
-(defmethod :default [v] v)
+(defmethod mm :default [v] v)
 {% endhighlight %}
 
 Invoking a multimethod involves evaluating two functions: the dispatch function (class in
