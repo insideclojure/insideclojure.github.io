@@ -127,7 +127,7 @@ Some other important sequence predicates:
 - `seq?` - checks whether an instance implements ISeq
 - `sequential?` - checks whether an instance implements Sequential
 
-There is no `seqable?` predicate, although that might be useful to add (would just check instanceof Seqable).
+*Update:* There is no `seqable?` predicate, although that might be useful to add. Such a function [already exists](https://github.com/clojure/core.incubator/blob/master/src/main/clojure/clojure/core/incubator.clj#L83) in clojure.core.incubator and it's implementation demonstrates that there are a number of cases that `seq` can also handle: existing seqs, nil, Iterable, arrays, Strings, and java.util.Map instances.
 
 ## Reference
 
