@@ -2,7 +2,6 @@
 layout: post
 date: 2014-12-13
 title: Caching multimethod default value dispatch
-tags: [multimethods, performance, 1.7]
 ---
 
 Ticket [CLJ-1429](http://dev.clojure.org/jira/browse/CLJ-1429) started from a 
