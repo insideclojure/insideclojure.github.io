@@ -31,7 +31,8 @@ layout: default
   </div>
 
   <p>Tags:</p>
-  <p id="post-meta">{{ tags_content }}</p>
+  <p>{{ tags_content }}</p>
+  <p>{{ post.tags }} </p>
 
   {% include disqus.html disqus_identifier=page.disqus_identifier %}
 </article>
