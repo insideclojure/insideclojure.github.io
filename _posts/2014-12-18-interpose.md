@@ -72,3 +72,5 @@ That's it! Quick performance comparison:
 | (into [] (interpose nil) v)  | 35.5 µs |
 
 This code has not yet been screened or added to 1.7, but I expect that it will be.
+
+*UPDATE: This ticket is included in 1.7.0-alpha5.*

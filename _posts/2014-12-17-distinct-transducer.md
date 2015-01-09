@@ -6,7 +6,7 @@ title: Creating a distinct transducer
 
 I wanted to talk in this post about implementing some new transducer impls for existing sequence functions which is based on [CLJ-1601](http://dev.clojure.org/jira/browse/CLJ-1601). If you haven't checked into transducers yet, it's probably best if you take a look at [this talk](https://www.youtube.com/watch?v=6mTbuzafcII), [this talk](https://www.youtube.com/watch?v=4KqUvG8HPYo), and [this page](http://clojure.org/transducers) as background.
 
-*NOTE: As of the writing date, this ticket has not yet been screened or incorporated into Clojure. It is still subject to change based on feedback during screening!!*
+*NOTE: The changes described in this patch are included in Clojure 1.7.0-alpha5.*
 
 The ticket (based on a request from Rich) asked for new transducer arities for three existing sequence functions: distinct, interpose, and map-indexed. In this post we'll look specifically at creating a transducer arity for distinct.
 
