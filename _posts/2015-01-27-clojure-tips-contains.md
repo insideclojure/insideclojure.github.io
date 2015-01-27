@@ -50,11 +50,11 @@ nil
 3
 {% endhighlight %}
 
-Each element (3, 4, 5) is invoked on the predicate (in this case, a set acting as a function). If none matches nil (a falsey value) is returned. If one does match, checking stops and the matched value is returned (a truthy value).
+Each element (3, 4, 5) is invoked on the predicate (in this case, a set acting as a function). If none matches, nil (a falsey value) is returned. If one does match, checking stops and the matched value is returned (a truthy value).
 
-If you find the falsey/truthy values of nil and 3 results to be disturbing, the `boolean` function can be wrapped around it to return false/true instead.
+If you find the falsey/truthy values of nil (falsey) and 3 (truthy) results to be different than what you want, the `boolean` function can be wrapped around it to return false/true instead.
 
-For all the myriad things that Clojure does stunningly right with collections, this is one of the most common and most non-obvious because it leverages several Clojure features in a surprising way (collections as functions, literal sets, and truthy/falsey values). 
+I am the first to admit that using `some` is non-obvious because it leverages several Clojure features in a surprising way for a newcomer (collections as functions, literal sets, and truthy/falsey values). 
 
 But! Note that `some` breaks if you happen to want to know whether a collection contains a falsey value (`false` or `nil`). In those cases, you will get back a falsey value regardless.
 
