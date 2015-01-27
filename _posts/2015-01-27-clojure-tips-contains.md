@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2015-01-27
-title: Clojure Tip - `contains?`
+title: Clojure Tip - "contains?"
 ---
 
 There are a number of questions and gotchas that come up over and over in Clojure forums. I thought it might be useful to write some of them up. I initially planned to write them up in a single post. But then the first one was long enough to be a whole entry.
