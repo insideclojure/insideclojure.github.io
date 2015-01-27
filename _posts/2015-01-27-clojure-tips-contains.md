@@ -68,7 +68,7 @@ If you're interested in a sequential search with early exit that works on falsey
         (recur (next coll) val))))
 {% endhighlight %}
 
-We could also envision this in terms of reduce (since we can more efficiently apply reduce in some cases):
+We could also envision this in terms of reduce (since we can more efficiently apply reduce on some input collections):
 
 {% highlight clojure %}
 (defn contains-val?
@@ -76,16 +76,17 @@ We could also envision this in terms of reduce (since we can more efficiently ap
   (reduce #(if (= val %2) (reduced true) %1) false coll))
 {% endhighlight %}
 
-I ran a quick benchmark on finding the last value in (vec (range 1000)) and found that the first version took 27 µs and the second reduce-based one took 16 µs. For comparison, a set lookup took 81 ns. So use the right data structure!
+I ran a quick benchmark on finding the last value in ``(vec (range 1000))`` and found that the first version took 27 µs and the second reduce-based one took 16 µs. For comparison, a set lookup took 81 ns. So use the right data structure!
 
 ## Going Java
 
-Another tricky approach is to leverage that Clojure collections implement java.util.Collection, which includes a .contains() that really does check for value containment (and works with nil):
+Another tricky approach is to leverage that Clojure collections implement java.util.Collection, which includes a .contains() that really does check for value containment (and also works with nil):
 
 {% highlight clojure %}
 => (.contains [3 4 5] 5)
+true
 {% endhighlight %}
 
-## Last word
+## The last word
 
 [Rich on contains?](https://groups.google.com/forum/#!msg/clojure/qNLBQkSB6jk/XUbQnBRcWPIJ)
