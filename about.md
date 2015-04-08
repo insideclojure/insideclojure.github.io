@@ -26,9 +26,8 @@ Buy Now
 
 ### Contact me
 
-This blog intentionally does not have comments. If you have question or a comment, please
-drop me a line on Twitter or by email. I will update the post in the case of errors or
-other useful information.
+If you have question or a comment, please drop me a line on Twitter or by email. 
+I will update the post in the case of errors or other useful information.
 
 If you have a topic you'd like me to cover, feel free to ask. I will not always want or be
 able to write on it, but I'm happy to consider it.
@@ -38,5 +37,6 @@ able to write on it, but I'm happy to consider it.
 - Email - [alex@puredanger.com](mailto:alex@puredanger.com)
 
 Thanks for reading!
+
 Alex Miller
 
