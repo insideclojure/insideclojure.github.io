@@ -16,7 +16,7 @@ this might be of use to others wishing to understand how Clojure works from the 
 Disclaimer: Any thoughts or opinions expressed in this blog are mine, not official
 statements by Cognitect about Clojure. 
 
-### "Clojure Applied"
+### Clojure Applied, now in beta!
 
 If you'd like to hear more, check out my book!
 
@@ -26,9 +26,6 @@ Buy Now
 
 ### Contact me
 
-- Twitter - [@puredanger](http://twitter.com/puredanger)
-- Blog - [http://tech.puredanger.com](http://tech.puredanger.com)
-
 This blog intentionally does not have comments. If you have question or a comment, please
 drop me a line on Twitter or by email. I will update the post in the case of errors or
 other useful information.
@@ -36,6 +33,10 @@ other useful information.
 If you have a topic you'd like me to cover, feel free to ask. I will not always want or be
 able to write on it, but I'm happy to consider it.
 
+- Twitter - [@puredanger](http://twitter.com/puredanger)
+- Blog - [http://tech.puredanger.com](http://tech.puredanger.com)
+- Email - [alex@puredanger.com](mailto:alex@puredanger.com)
+
+Thanks for reading!
 Alex Miller
 
-[alex@puredanger.com](mailto:alex@puredanger.com)
