@@ -16,13 +16,18 @@ this might be of use to others wishing to understand how Clojure works from the 
 Disclaimer: Any thoughts or opinions expressed in this blog are mine, not official
 statements by Cognitect about Clojure. 
 
-### More Information
+### "Clojure Applied"
+
+If you'd like to hear more, check out my book!
+
+<iframe border="0px" height="182px" seamless="true" src="https://pragprog.com/products/buy_now_insert/vmclojeco" width="155px">
+Buy Now
+</iframe>
+
+### Contact me
 
 - Twitter - [@puredanger](http://twitter.com/puredanger)
 - Blog - [http://tech.puredanger.com](http://tech.puredanger.com)
-- ["Clojure Applied"](https://pragprog.com/book/vmclojeco/clojure-applied) - a forthcoming book by me and Ben Vandgrift! Hopefully in Beta soon...
-
-### Contact me
 
 This blog intentionally does not have comments. If you have question or a comment, please
 drop me a line on Twitter or by email. I will update the post in the case of errors or
