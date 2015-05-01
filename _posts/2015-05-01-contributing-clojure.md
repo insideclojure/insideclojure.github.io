@@ -70,7 +70,7 @@ Speaking of patches .... Clojure and the contrib projects only accept changes vi
 
 The pull request model optimizes for ease of contribution. However, Rich has [made the point](https://groups.google.com/forum/#!msg/clojure/jWMaop_eVaQ/3M4gddaXDZoJ) in the past that he prefers to optimize instead for the management/assessment side of the process where his preferred workflow is more efficient working with patches. 
 
-That said, the PR functionality has improved in many ways since these decisions were made and it's possible that things will change in the future. For now though, it's patches - I'll describe the basics below (it's really not hard!).
+That said, the PR functionality has improved in many ways since these decisions were made and it's possible that things will change in the future. For now though, it's patches - I'll describe the basics below.
 
 ## Ticket Workflow
 
