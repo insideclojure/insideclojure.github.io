@@ -16,9 +16,9 @@ this might be of use to others wishing to understand how Clojure works from the 
 Disclaimer: Any thoughts or opinions expressed in this blog are mine, not official
 statements by Cognitect about Clojure. 
 
-### Clojure Applied, now in beta!
+### Clojure Applied
 
-If you'd like to hear more, check out my book!
+If you'd like to hear more, Ben Vandgrift and I wrote a Clojure book and you might enjoy it:
 
 <iframe border="0px" height="182px" seamless="true" src="https://pragprog.com/products/buy_now_insert/vmclojeco" width="155px">
 Buy Now
