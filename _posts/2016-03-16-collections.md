@@ -20,15 +20,15 @@ Some of the key trait classes (all in `clojure.lang`) are:
   * `count()`
 * `Indexed` - extends `Counted`, allows index-based lookup
   * `nth(int i)`
-	* `nth(int i, Object notFound)`
+  * `nth(int i, Object notFound)`
 * `Sequential` - marker interface for sequential collections
 * `Associative` (extends `ILookup`)
   * `containsKey(Object key)`
-	* `entryAt(Object key)`
-	* `assoc(Object key, Object val)`
-	* via parent `ILookup`:
-	  * `valAt(Object key)`
-		* `valAt(Object key, Object notFound)`
+  * `entryAt(Object key)`
+  * `assoc(Object key, Object val)`
+  * via parent `ILookup`:
+    * `valAt(Object key)`
+    * `valAt(Object key, Object notFound)`
 * `Sorted` - marker interface for sorted
 * `Seqable` - for collections that can produce a sequence
   * `seq()`
@@ -61,23 +61,23 @@ These interfaces also have corresponding predicates that just check the type: `c
 Finally, there are a number of concrete implementations (actually several per type):
 
 * `IPersistentList`
-	* `PersistentList` - typical list
-	* `PersistentList$EmptyList` - special-cased empty list
-	* `PersistentQueue` - a queue implementation
+  * `PersistentList` - typical list
+  * `PersistentList$EmptyList` - special-cased empty list
+  * `PersistentQueue` - a queue implementation
 * `IPersistentVector`
-	* `PersistentVector` - typical vector
-	* `MapEntry` - a map entry acts as a 2-element persistent vector
-	* `SubVector` - created via `subvec`, really a view over a source vector
-	* `clojure.core/Vec` - the primitive vector implementation
+  * `PersistentVector` - typical vector
+  * `MapEntry` - a map entry acts as a 2-element persistent vector
+  * `SubVector` - created via `subvec`, really a view over a source vector
+  * `clojure.core/Vec` - the primitive vector implementation
 * `IPersistentSet`
-	* `PersistentHashSet` - typical set
-	* `PersistentTreeSet` - sorted set
+  * `PersistentHashSet` - typical set
+  * `PersistentTreeSet` - sorted set
 * `IPersistentMap`
-	* `PersistentArrayMap` - array-based map used for 0-8 pairs
-	* `PersistentHashMap` - typical hash map
-	* `PersistentTreeMap` - sorted map
-	* `PersistentStructMap` - from `defstruct` (effectively deprecated)
-	* all defrecords produce instances of `IPersistentMap`
+  * `PersistentArrayMap` - array-based map used for 0-8 pairs
+  * `PersistentHashMap` - typical hash map
+  * `PersistentTreeMap` - sorted map
+  * `PersistentStructMap` - from `defstruct` (effectively deprecated)
+  * all defrecords produce instances of `IPersistentMap`
 
 But what about sequences - how do they play in here? This is where things get a little tricky.
 
