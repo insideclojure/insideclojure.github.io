@@ -18,6 +18,6 @@ Re *dev process*, we've talked about this a bit and when we get back to Clojure 
 
 Re *"native" support*, I think in general people underestimate how much value we get from the JVM / JS engines and how much work would be necessary to do "native" Clojure. In any case, this is not something the core team plans to work on. If you want to work on it, please do! We have been trying to at least not get in the way of Graal and fixed a couple things in 1.10 that were obstacles for it, happy to keep doing that.
 
-Re *clj on Windows*, we need your help! A lot of work has been done, but I do not have the bandwidth to take it over the line. See [https://dev.clojure.org/jira/browse/TDEPS-67](https://dev.clojure.org/jira/browse/TDEPS-67) and the #clj-on-windows room in Slack. If you want it, help us get there.
+Re *clj on Windows*, we need your help! A lot of work has been done, but I do not have the bandwidth to take it over the line. See [TDEPS-67](https://dev.clojure.org/jira/browse/TDEPS-67) and the #clj-on-windows room in Slack. If you want it, help us get there.
 
 And finally, I will just say thanks to Daniel Compton for everything he does for the community - between the REPL, the podcast, Clojurists Together, clojars, deps, etc, he puts in a ton of time and care for us and I really appreciate everything he does. Please give him your thanks! 
