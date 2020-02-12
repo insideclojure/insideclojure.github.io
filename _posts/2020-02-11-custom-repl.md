@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2020-02-02
+date: 2020-02-11
 title: Customizing your REPL in clj
 ---
 
