@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2020-01-24
-title: Journal 2020.2 - s3 transporter, survey
+date: 2020-02-02
+title: Customizing your REPL in clj
 ---
 
 There was a question on Slack this evening about getting a similar effect to the injections feature of Leiningen in clj. There is no built-in feature for this, but you don't really need one. The provided [clojure.main/repl](https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl) function is highly customizable. For example, it provides an `:eval` hook, which defaults to just the `eval` function.
