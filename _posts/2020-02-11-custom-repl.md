@@ -22,7 +22,7 @@ The :init hook replicates what clojure.main uses as an initial binding set, so i
 
 You can start this as your actual repl at a command line by just smooshing it all together:
 
-{% highlight %}
+{% highlight bash %}
 clj -e "(require '[clojure.main :as m]) \
         (m/repl :init #(apply require m/repl-requires) \
         :eval (fn [form] (do (require '[clojure.pprint :refer [pp]]) \
