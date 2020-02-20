@@ -11,23 +11,23 @@ I'll also shout out some people in the community that came up many times - Sean 
 I also tried to categorize and sort through the top requests that I saw and here's the rough tally I came up with (subject to a lot of interpretation of course) for Clojure:
 
 * 20+ mentions
-** Spec 2
-** More or better beginner or getting started docs
-** More jobs or more people to hire for jobs
+  * Spec 2
+  * More or better beginner or getting started docs
+  * More jobs or more people to hire for jobs
 * 10+ 
-** Best practices docs on specific topics - spec, core.async, code organization, etc
-** Error messages
-** Graal native image support
+  * Best practices docs on specific topics - spec, core.async, code organization, etc
+  * Error messages
+  * Graal native image support
 * 3<x<10
-** Startup performance (specifically more for apps, related to namespace loading, not scripting cases)
-** Reference docs or docstrings/examples
-** Runtime performance
-** Data science
-** More involvement by community in road map
-** Static analysis tools
-** Java interop, specifically around Java 8+ functional APIs
-** Web framework
-** General lib stagnation/abandonment
+  * Startup performance (specifically more for apps, related to namespace loading, not scripting cases)
+  * Reference docs or docstrings/examples
+  * Runtime performance
+  * Data science
+  * More involvement by community in road map
+  * Static analysis tools
+  * Java interop, specifically around Java 8+ functional APIs
+  * Web framework
+  * General lib stagnation/abandonment
 * Fewer - stack traces, debuggeer, various tools.deps improvements, etc
 
 So that's a lot of stuff, but the good thing is, there's a high degree of overlap between this list and what we consider priorities for the core team and direction. Spec 2 has not had a lot of active commits, but has been in active design off and on and I want nothing more than to get back to it and finish it, which should happen this year.
