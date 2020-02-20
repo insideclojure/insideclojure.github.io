@@ -28,7 +28,7 @@ I also tried to categorize and sort through the top requests that I saw and here
   * Java interop, specifically around Java 8+ functional APIs
   * Web framework
   * General lib stagnation/abandonment
-* Fewer - stack traces, debuggeer, various tools.deps improvements, etc
+* Fewer - stack traces, debugger, various tools.deps improvements, etc
 
 So that's a lot of stuff, but the good thing is, there's a high degree of overlap between this list and what we consider priorities for the core team and direction. Spec 2 has not had a lot of active commits, but has been in active design off and on and I want nothing more than to get back to it and finish it, which should happen this year.
 
