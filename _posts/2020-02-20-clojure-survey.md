@@ -40,4 +40,4 @@ For docs, I definitely feel the need there, particularly for beginners, and ther
 
 Hiring/getting hired in a Clojure job is a perennial issue. Jobs exist, and people exist, but the distribution of those in geography or experience are often out of whack. Probably the best place to make those connections are at in-person conferences, and I'm happy that we've seen so many new conferences spring up over the last couple years in multiple continents.
 
-If you want to dive more deeply into this feedback and see what you can do to help, the response can be downloadeed as part of the [full results](https://www.surveymonkey.com/results/SM-CDBF7CYT7/)..
+If you want to dive more deeply into this feedback and see what you can do to help, the response can be downloaded as part of the [full results](https://www.surveymonkey.com/results/SM-CDBF7CYT7/)..
