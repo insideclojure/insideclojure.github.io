@@ -10,7 +10,7 @@ There is one good example of this sort of program in Clojure itself - `clojure.c
 
 Looking closer at this function's doc:
 
-{% highlight shell %}
+```
 (doc clojure.core.server/start-server)
 -------------------------
 clojure.core.server/start-server
@@ -25,21 +25,21 @@ clojure.core.server/start-server
     :server-daemon Is server thread a daemon?, defaults to true
     :client-daemon Are client threads daemons?, defaults to true
    Returns server socket.
-{% endhighlight %}
+```
 
 The Clojure tools now support the invocation of an ad hoc function using the -X parameter, and then a series of key value parameters. To invoke this function, it's necessary to pass all of the required arguments (`:name`, `:port`, `:accept` function) plus we need to set `:server-daemon` to false to prevent the JVM from exiting:
 
-{% highlight shell %}
+```
 clojure -X clojure.core.server/start-server :name '"server"' :port 5555 :accept clojure.core.server/repl :server-daemon false
-{% endhighlight %}
+```
 
 Once the repl server has been started we can verify it's working by connecting with netcat in a separate terminal:
 
-{% highlight shell %}
+```
 nc localhost 5555
 user=> (+ 1 1)
 2
-{% endhighlight %}
+```
 
 Of course, that's a bit wordy on the command line and we mostly want all of those options every time so instead we can move those arguments into the deps.edn file:
 
@@ -55,15 +55,15 @@ Of course, that's a bit wordy on the command line and we mostly want all of thos
 
 And then we can just invoke the function via the args in the alias:
 
-{% highlight shell %}
+```
 clojure -X:repl-server
-{% endhighlight %}
+```
 
 The execution mode also allows command line overrides of those parameters stored in the exec-args:
 
-{% highlight shell %}
+```
 clojure -X:repl-server :port 5678
-{% endhighlight %}
+```
 
 That's it! This just seemed like a good quick example to understand how -X works...
 
