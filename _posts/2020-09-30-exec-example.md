@@ -4,9 +4,9 @@ date: 2020-09-30
 title: An example of clj execution
 ---
 
-Last week we released a new version of the Clojure tools with support for directly executing a Clojure function that takes a map.
+Last week we released a new version of the Clojure tools with support for directly [executing](https://clojure.org/reference/deps_and_cli#_executing_a_function) a Clojure function that takes a map.
 
-There is one good example of this sort of program in Clojure itself - `clojure.core.server/start-server`, which can be used to start a socket server. Clojure users are probably most familiar with using the socket server to run a remote repl (it can really be used to run any kind of socket server).
+There is one good example of this sort of program in Clojure itself - `clojure.core.server/start-server`, which can be used to [start a socket server](https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server). Clojure users are probably most familiar with using the socket server to run a remote repl (but it can really be used to run any kind of socket server).
 
 Looking closer at this function's doc:
 
