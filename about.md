@@ -16,13 +16,23 @@ this might be of use to others wishing to understand how Clojure works from the 
 Disclaimer: Any thoughts or opinions expressed in this blog are mine, not official
 statements by Cognitect about Clojure. 
 
+### Programming Clojure, 3rd edition
+
+I worked on the 3rd edition of Programming Clojure, previously written by Stuart Halloway and Aaron Bedra.
+
+<a href="https://pragprog.com/titles/shcloj3/programming-clojure-third-edition/">
+<img src="https://pragprog.com/titles/shcloj3/programming-clojure-third-edition/shcloj3_hu6d5b8b63a4954cb696e89b39f929331b_518595_500x0_resize_q75_box.jpg" width="155px">
+</a>
+
 ### Clojure Applied
 
-If you'd like to hear more, Ben Vandgrift and I wrote a Clojure book and you might enjoy it:
+Ben Vandgrift and I wrote a Clojure book designed to be a "next" Clojure book after you've read an intro book and want the next layer of detail:
 
-<iframe border="0px" height="182px" seamless="true" src="https://pragprog.com/products/buy_now_insert/vmclojeco" width="155px">
-Buy Now
-</iframe>
+<a href="https://pragprog.com/titles/vmclojeco/clojure-applied/">
+<img src="https://pragprog.com/titles/vmclojeco/clojure-applied/vmclojeco_hu6d5b8b63a4954cb696e89b39f929331b_1144120_500x0_resize_q75_box.jpg" width="155px">
+</a>
+
+
 
 ### Contact me
 
