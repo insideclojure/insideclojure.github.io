@@ -58,7 +58,7 @@ Instead, we've added new `partitionv`, `partitionv-all`, and `splitv-at` functio
 
 ## Performance
 
-There was a lot of performance testing done but some highlights here (tests run using Java 11, best time of large set of trials reported).
+There was a lot of performance testing done but some highlights here (tests run using Java 11, best time of large set of trials reported) and the changes in [CLJ-2713](https://clojure.atlassian.net/browse/CLJ-2713).
 
 {% highlight clojure %}
 (dotimes [_ 1000]
@@ -88,7 +88,7 @@ This led me ultimately into looking at a lot of the complexity in LongRange, whi
 
 I addressed both of these complexity sources by deleting a lot of code, the best way to address complexity. :) For the bounds checking, these are cases that are rare and easy to avoid by checking during LongRange construction and falling back to our slow path Range class instead (which already handles these cases). For the chunk caching, I simplified to just use exactly one chunk to match the entire range.
 
-The upside of these changes is that LongRange is greatly simplified and is now faster for both seq and reduce based traversal. One downside is that the fields of LongRange changed and in 1.12, it will not be serialization-compatible. We've never guaranteed that (and have regularly broken serializability over the history of Clojure), but it's something we are newly aware of due to some unintentional effects in 1.11. Our intent going forward is to not break serialization when possible by retaining serialVersionUIDs (we have a separate issue to deal with this) and to be explicit about when serialization does change.
+The upside of these changes is that LongRange is greatly simplified and is now faster for both seq and reduce based traversal. One downside is that the fields of LongRange changed and in 1.12, it will not be serialization-compatible. We've never guaranteed that (and have regularly broken serializability over the history of Clojure), but it's something we are newly aware of due to some unintentional effects in 1.11. Our intent going forward is to not break serialization when possible by retaining serialVersionUIDs (we have a separate [issue](https://clojure.atlassian.net/browse/CLJ-1327) to deal with this) and to be explicit when serialization does change.
 
 ## Plans
 
