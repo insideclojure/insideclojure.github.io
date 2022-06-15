@@ -76,7 +76,7 @@ string | 782 | 538 | 247
 array-map | 795 | 512 | 260
 seq | 790 | 672 | 385
 
-The latter two columns show that `partition-all` times improved - this is mostly the `IDrop` improvements. But the `partitionv-all` times show all the benfits from that plus using the take transducer, especially on reducible collections.
+The latter two columns show that `partition-all` times improved - this is mostly the `IDrop` improvements. But the `partitionv-all` times show the benefits from that plus using the take transducer, especially on reducible collections.
 
 ## LongRange revisited
 
