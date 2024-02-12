@@ -8,7 +8,7 @@ Clojure [1.12.0-alpha6](https://clojure.org/news/2024/02/08/1-12-alpha6) introdu
 
 ## The olden days
 
-Clojure functions are first-class values and can easily be passed around, but a common question seen in Clojure forums for years is how to map a static method (or instance method or constructor) over a collection. The canonical answer has been to wrap it in an anonymous function:
+Clojure functions are first-class values and can easily be passed around, but a common question seen in Clojure forums for years is how to map a static method (or instance method or constructor) over a collection. The idiomatic answer has been to wrap it in an anonymous function:
 
 {% highlight clojure %}
 ;; static method
