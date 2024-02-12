@@ -8,7 +8,7 @@ Clojure [1.12.0-alpha6](https://clojure.org/news/2024/02/08/1-12-alpha6) introdu
 
 ## The olden days
 
-Clojure functions are first-class values and can easily be passed around, but a common question seen in Clojure forums for years is how map a static method (or instance method or constructor) over a collection. The canonical answer has been to wrap it in an anonymous function:
+Clojure functions are first-class values and can easily be passed around, but a common question seen in Clojure forums for years is how to map a static method (or instance method or constructor) over a collection. The canonical answer has been to wrap it in an anonymous function:
 
 {% highlight clojure %}
 ;; static method
@@ -24,11 +24,11 @@ Clojure functions are first-class values and can easily be passed around, but a 
 ;; (#inst "2024-02-12T21:01:34.522-00:00" #inst "2024-02-12T21:03:00.922-00:00")
 {% endhighlight %}
 
-These all work but we're creating these anonymous functions just to satisfy Clojure. Java increasingly allows you to treat methods and constructors as functions and pass them around as first-class values. We can do better!
+These all work, but it seems like we could do better, especially as Java increasingly allows you to treat methods and constructors as functions and pass them around as first-class values.
 
 ## Java methods are Clojure functions
 
-Since alpha6, qualified method symbols are Clojure function values and can be used as if you had created any of the anonymous functions above:
+Since alpha6, qualified method symbols are Clojure function values and can be used as if you had created the anonymous functions above:
 
 {% highlight clojure %}
 (map Long/toBinaryString (range 8))
@@ -99,3 +99,11 @@ Invocation of method abs in class java.lang.Math expected 1 arguments, but recei
 Static fields are another kind of qualified symbol, `Aclass/staticField` that already existed in Clojure. Static fields evaluate to their value and do not need to be invoked with parens. Due to details of the implementation, surrounding static fields with parens does appear to have the same effect, but this has not ever been published as valid syntax and it breaks the general substitutability of Clojure expressions - a static field in parens should invoke the value of the field.
 
 For backwards compatibility, this unintended behavior has been retained in Clojure 1.12, but clj-kondo will now warn about the use of `(AClass/staticField)` and we hope that eventually we can remove this provision in Clojure.
+
+## Unsupported
+
+Java allows you to pass methods from a particular instance object ("bound functions"), effectively closing over the "this" object. Clojure qualified method values do not support this - use an anonymous function that closes over the object, as before.
+
+Java vararg methods are implemented in the JVM as methods that receive a typed array of values for the trailing argument, and Clojure method values match this behavior. It is not possible to supply individual values to var arg methods in either invocation or value position, although this may be considered in a future release.
+
+
