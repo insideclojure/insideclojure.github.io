@@ -42,7 +42,7 @@ If there are multiple arities for the method name, it would be possible to make 
 
 If there are multiple overloads for method name, specify the desired overload types in the param-tags instead of wildcards (as in the 3rd example above).
 
-The emitted code is the same code you might have written at the beginning in the anonymous function. However, the generated function also knows exactly the method being invoked, and its parameter and return types. Due to that, there is no reflection (the original examples had reflection) and primitive type hints or coercions where they could be usefully applied (these were all missing in the original examples).
+The emitted code is the same code you might have written at the beginning in the anonymous function. However, the generated function also knows exactly the method being invoked, and its parameter and return types. Due to that, there is no reflection (the original examples had reflection), and primitive type hints or coercions are used where they could be usefully applied (these were all missing in the original examples).
 
 ## Qualified methods in invocation position
 
